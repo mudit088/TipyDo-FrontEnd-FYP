@@ -1,0 +1,7 @@
+.qr-btn{
+    opacity: 0;
+}
+.qr-box:hover .qr-btn{
+    opacity: 1;
+    transition: 0.3s opacity ease-in-out;
+}
