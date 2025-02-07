@@ -83,9 +83,13 @@ const Dashboard = () => {
       }
     }, error => {
       if (error) console.error('Error generating QR code:', error);
-      else setQrURL(true);
+      // else{
+      //   setTimeout(() => { setQrURL(true) }, 3000)
+      //   setQrURL(false);
+      // } 
     });
   };
+  
 
   useEffect(() => {
     fetchmanager();
