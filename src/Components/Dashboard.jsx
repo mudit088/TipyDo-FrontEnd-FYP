@@ -245,7 +245,7 @@ const Dashboard = () => {
               <div>
                 <form onSubmit={handleCountSubmit} className=''>
                   <div className=" ml-10 gap-1 ">
-                    <label htmlFor="count" className="text-base  font-medium text-white">
+                    <label htmlFor="count" className="text-base  font-medium text-black">
                       Total number of Tables/Rooms
                     </label>
                     <input
@@ -296,8 +296,8 @@ const Dashboard = () => {
                             name="name"
                             value={formData.name}
                             onChange={handleInputChange}
-                            className="h-8 rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-gray-400"
-                            placeholder="Enter your Name"
+                            className="h-10 rounded-md border bg-slate-300 text-black border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-gray-400"
+                            placeholder="Enter your Name  "
                             minLength={5}
                             required
                           />
@@ -311,7 +311,7 @@ const Dashboard = () => {
                             name="employeetype"
                             onChange={handleInputChange}
                             value={formData.employeetype}
-                            className="h-8 rounded-md border border-gray-300 px-3 py-1 text-sm focus:outline-none focus:ring-1 focus:ring-gray-400"
+                            className="h-8 rounded-md border text-black bg-slate-300 border-gray-300 px-3 py-1 text-sm focus:outline-none focus:ring-1 focus:ring-gray-400"
                             required
                           >
                             <option id={0} value="">Choose...</option>
@@ -319,7 +319,7 @@ const Dashboard = () => {
                           </select>
                         </div>
                         <div className="flex flex-col gap-1">
-                          <label htmlFor="workType" className="text-base font-medium text-gray-900">
+                          <label htmlFor="workType" className="text-base text-black font-medium text-gray-900">
                             Work Type
                           </label>
                           <input
@@ -328,7 +328,7 @@ const Dashboard = () => {
                             name="worktype"
                             value={formData.worktype}
                             onChange={handleInputChange}
-                            className="h-8 rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-gray-400"
+                            className="h-8 rounded-md border bg-slate-300 border-gray-300 text-black px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-gray-400"
                             placeholder="Enter Work Type"
                             required
                           />
@@ -343,7 +343,7 @@ const Dashboard = () => {
                             name="dateofjoining"
                             value={formData.dateofjoining}
                             onChange={handleInputChange}
-                            className="h-8 rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-gray-400"
+                            className="h-8 rounded-md border bg-slate-300 border-gray-300 text-black px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-gray-400"
                             required
                           />
                         </div>
@@ -357,7 +357,7 @@ const Dashboard = () => {
                             name="email"
                             value={formData.email}
                             onChange={handleInputChange}
-                            className="h-8 rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-gray-400"
+                            className="h-8 rounded-md border bg-slate-300 border-gray-300 text-black px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-gray-400"
                             placeholder="Enter Email"
                             pattern="[^\s@]+@[^\s@]+\.[^\s@]+"
                             title="abcd@email.com"
@@ -374,7 +374,7 @@ const Dashboard = () => {
                             name="phone"
                             value={formData.phone}
                             onChange={handleInputChange}
-                            className="h-8 rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-gray-400"
+                            className="h-8 rounded-md border border-gray-300 bg-slate-300 text-black px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-gray-400"
                             placeholder="Enter Phone Number"
                             maxLength={10}
                             minLength={10}
@@ -392,7 +392,7 @@ const Dashboard = () => {
                             name="upiId"
                             value={formData.upiId}
                             onChange={handleInputChange}
-                            className="h-8 rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-gray-400"
+                            className="h-8 rounded-md border text-black bg-slate-300 border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-gray-400"
                             placeholder="Enter UPI ID"
                             pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,64}"
                             title="username@provider"
@@ -409,13 +409,13 @@ const Dashboard = () => {
                             name="upiname"
                             value={formData.upiname}
                             onChange={handleInputChange}
-                            className="h-8 rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-gray-400"
+                            className="h-8 rounded-md border border-gray-300 bg-slate-300 text-black px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-gray-400"
                             placeholder="Enter your Name in UPI"
                             required
                           />
                         </div>
                         <div className="flex flex-col gap-1">
-                          <label htmlFor="image" className="text-base font-medium text-gray-900">
+                          <label htmlFor="image" className="text-base font-medium  text-gray-900">
                             Image upload
                           </label>
                           <input
@@ -424,7 +424,7 @@ const Dashboard = () => {
                             accept="image/*"
                             name="image"
                             onChange={handleImageUpload}
-                            className="h-8 rounded-md border border-gray-300 px-3 py-1 text-sm focus:outline-none focus:ring-1 focus:ring-gray-400"
+                            className="h-8 rounded-md border border-gray-300 bg-slate-300 text-black px-3 py-1 text-sm focus:outline-none focus:ring-1 focus:ring-gray-400"
                             title='Image Only'
                             required
                           />

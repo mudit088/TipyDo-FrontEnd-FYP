@@ -72,13 +72,13 @@ const SignUp = () => {
 
               <div className="space-y-5">
                 <div>
-                  <label htmlFor="" className="text-base font-medium text-white">
+                  <label htmlFor="" className="text-base font-medium text-black">
                     {' '}
                     Owner Name (Admin){' '}
                   </label>
                   <div className="mt-2">
                     <input
-                      className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                      className="flex h-10 w-full text-black rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                       type="Text"
                       placeholder="Enter your Name"
                       onChange={handleChange}
@@ -91,7 +91,7 @@ const SignUp = () => {
 
                 <div>
                   <div className="flex items-center justify-between">
-                    <label htmlFor="" className="text-base font-medium text-white">
+                    <label htmlFor="" className="text-base font-medium text-black">
                       {' '}
                       Business Name :
                       {' '}
@@ -99,7 +99,7 @@ const SignUp = () => {
                   </div>
                   <div className="mt-2">
                     <input
-                      className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                      className="flex h-10 w-full text-black rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                       type="Text"
                       placeholder="Enter the name of your Business"
                       onChange={handleChange}
@@ -112,14 +112,14 @@ const SignUp = () => {
                 <div>
 
                   <div className="flex items-center justify-between">
-                    <label htmlFor="businesstype" className="text-base font-medium text-white">
+                    <label htmlFor="businesstype" className="text-base font-medium text-black">
                       {' '}
                       Business Type :
                       {' '}
                     </label>
                   </div>
                   <div className="mt-2">
-                    <select name="businesstype" id="businesstype" className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50" onChange={handleChange} defaultValue={""} required>
+                    <select name="businesstype" id="businesstype" className="flex h-10 w-full text-black rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50" onChange={handleChange} defaultValue={""} required>
                       <option id={0} value="">Choose...</option>
                       {busitype.map(id => <option key={id} value={id}>{id}</option>)}
                     </select>
@@ -133,7 +133,7 @@ const SignUp = () => {
 
                 <div>
                   <div className="flex items-center justify-between">
-                    <label htmlFor="" className="text-base font-medium text-white">
+                    <label htmlFor="" className="text-base font-medium text-black">
                       {' '}
                       Email:
                       {' '}
@@ -141,7 +141,7 @@ const SignUp = () => {
                   </div>
                   <div className="mt-2">
                     <input
-                      className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                      className="flex h-10 w-full text-black rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                       type="email"
                       placeholder="xyz@gmail.com"
                       onChange={handleChange}
@@ -155,7 +155,7 @@ const SignUp = () => {
 
                 <div>
                   <div className="flex items-center justify-between">
-                    <label htmlFor="" className="text-base font-medium text-white">
+                    <label htmlFor="" className="text-base font-medium text-black">
                       {' '}
                       Phone number:
                       {' '}
@@ -163,7 +163,7 @@ const SignUp = () => {
                   </div>
                   <div className="mt-2">
                     <input
-                      className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                      className="flex h-10 w-full rounded-md border text-black border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                       type="Number"
                       placeholder="Enter Phone Number"
                       onChange={handleChange}
@@ -177,13 +177,13 @@ const SignUp = () => {
                 </div>
 
                 <div>
-                  <label htmlFor="" className="text-base font-medium text-white">
+                  <label htmlFor="" className="text-base font-medium text-black">
                     {' '}
                     Username{' '}
                   </label>
                   <div className="mt-2">
                     <input
-                      className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                      className="flex h-10 w-full text-black rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                       type="Text"
                       placeholder="Enter your Username"
                       onChange={handleChange}
@@ -199,7 +199,7 @@ const SignUp = () => {
 
                 <div>
                   <div className="flex items-center justify-between">
-                    <label htmlFor="" className="text-base font-medium text-white">
+                    <label htmlFor="" className="text-base font-medium text-black">
                       {' '}
                       Password:
                       {' '}
@@ -220,7 +220,7 @@ const SignUp = () => {
                 <div>
                   <button
                     type="submit"
-                    className="inline-flex w-full items-center justify-center rounded-md bg-teal-500 px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-teal-200"
+                    className="inline-flex w-full items-center justify-center rounded-md bg-teal-500 px-3.5 py-2.5 font-semibold leading-7 text-black hover:bg-teal-200"
                   >
                     Get started
                   </button>

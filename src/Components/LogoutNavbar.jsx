@@ -4,7 +4,10 @@ import { Link, useNavigate } from 'react-router-dom';
 const LogoutNavbar = ({navto}) => {
   const navigate = useNavigate();
   const handleLogout = () => {
-    localStorage.removeItem("auth-token");
+    if(navto === "employee")
+      localStorage.removeItem("emp-auth-token");
+    else if(navto === "manager")
+      localStorage.removeItem("auth-token");
     navigate(`/login/${navto}`);
   };
 

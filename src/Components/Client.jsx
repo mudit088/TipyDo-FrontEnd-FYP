@@ -125,7 +125,7 @@ const Client = () => {
             {/* <p className='text-blue-600 text-2xl pt-10 pb-10 font-semibold'>HAPPY THANKSGIVING</p> */}
 
             <div>
-              <label htmlFor="employeeType" className="text-base font-medium p-2 text-gray-100 text-xl">
+              <label htmlFor="employeeType" className="text-base text-black font-medium p-2  text-xl">
                 Table Number
               </label>
               <select
@@ -133,7 +133,7 @@ const Client = () => {
                 name="employeetype"
                 value={value}
                 onChange={handlechange}
-                className="h-8 sm:w-56 rounded-md border  border-gray-300 px-3 py-1 text-sm focus:outline-none focus:ring-1 focus:ring-gray-400"
+                className="h-8 sm:w-56 rounded-md border  border-gray-300 text-black px-3 py-1 text-sm focus:outline-none focus:ring-1 focus:ring-gray-400"
                 required
               >
                 <option id={0} value={0}>Choose...</option>
