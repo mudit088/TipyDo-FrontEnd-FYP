@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import EmployeeCard from './EmployeeCard';
 import { useNavigate, useLocation, Link } from "react-router-dom";
-import QRCode from "qrcode";
+import { QRCode } from 'react-qr-code';
 import LogoutNavbar from './LogoutNavbar';
 
 const Dashboard = () => {
@@ -15,7 +15,7 @@ const Dashboard = () => {
   const [count, setCount] = useState(0);
   const navigate = useNavigate();
   const location = useLocation();
-  const canvasRef = useRef();
+  const qrCodeRef = useRef();
 
   const fetchmanager = async () => {
     let token = localStorage.getItem("auth-token") || "";
@@ -73,20 +73,6 @@ const Dashboard = () => {
     setCount(json.count)
   }
 
-  const generateQR = (data) => {
-    QRCode.toCanvas(canvasRef.current, data, {
-      width: 200,
-      margin: 1,
-      color: {
-        dark: "#000000",
-        light: "#ffffff"
-      }
-    }, error => {
-      if (error) console.error('Error generating QR code:', error);
-      else setQrURL(true);
-    });
-  };
-
   useEffect(() => {
     fetchmanager();
   }, []);
@@ -96,10 +82,9 @@ const Dashboard = () => {
       const url = window.location.href;
       const baseurl = url.substring(0, url.length - location.pathname.length);
       setCururl(baseurl);
-      generateQR(`${baseurl}/client/${mgr.username}`);
+      setQrURL(true);
     }
   }, [mgr]);
-
 
   const emptype = ['Full-time', 'Part-time', 'Temporary', 'Intern', 'Seasonal', 'Leased'];
   const [modal, setModal] = useState(false);
@@ -126,20 +111,14 @@ const Dashboard = () => {
       ...formData,
       [name]: value,
     });
-    // console.log(formData)
   };
 
   const handleImageUpload = (e) => {
     var reader = new FileReader();
-    // console.log(e.target.files[0])
     reader.readAsDataURL(e.target.files[0]);
     reader.onload = () => {
       setFormData({ ...formData, image: reader.result });
-      console.log(formData.image)
     }
-    // reader.onerror = error => {
-    //     console.log(`Error: ${error.message}`)
-    // }
   };
 
   const handleFormSubmit = async (e) => {
@@ -147,12 +126,10 @@ const Dashboard = () => {
     let token = "";
     if (localStorage.getItem("auth-token")) {
       token = localStorage.getItem("auth-token")
-      console.log(token)
     }
     else {
       navigate('/login/manager')
     }
-    console.log(token)
     const response = await fetch(`${serverurl}/api/employee`, {
       method: 'POST',
       headers: {
@@ -164,10 +141,8 @@ const Dashboard = () => {
     const json = await response.json()
     console.log(json)
 
-    // Add new employee to the employees array
     const newEmployee = { ...formData };
     setEmployees([...employees, newEmployee]);
-    // Reset form data and close modal
     setFormData({
       managerusername: mgr.username,
       name: '',
@@ -183,16 +158,30 @@ const Dashboard = () => {
     setModal(false);
   };
 
-
-
   const handleQRDownload = () => {
-    if (canvasRef.current) {
-      const canvas = canvasRef.current;
-      const image = canvas.toDataURL("image/png");
-      const link = document.createElement("a");
-      link.href = image;
-      link.download = "qr-code.png";
-      link.click();
+    if (qrCodeRef.current) {
+      const svg = qrCodeRef.current.querySelector('svg'); // Get the SVG element
+      const svgData = new XMLSerializer().serializeToString(svg); // Convert SVG to string
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+  
+      // Set canvas dimensions to match the SVG
+      const svgSize = svg.getBoundingClientRect();
+      canvas.width = svgSize.width;
+      canvas.height = svgSize.height;
+  
+      // Create an image and draw it on the canvas
+      const img = new Image();
+      img.onload = () => {
+        ctx.drawImage(img, 0, 0);
+        // Convert canvas to PNG and trigger download
+        const pngFile = canvas.toDataURL('image/png');
+        const downloadLink = document.createElement('a');
+        downloadLink.download = 'QRCode.png';
+        downloadLink.href = pngFile;
+        downloadLink.click();
+      };
+      img.src = `data:image/svg+xml;base64,${btoa(svgData)}`; // Load SVG as an image
     }
   };
 
@@ -227,19 +216,18 @@ const Dashboard = () => {
       <div className='overflow-x-hidden pt-[10vh] min-h-[100vh] bg-gray-800'>
         {mgr.username && (
           <div className="w-screen h-full">
-            {/* manager details */}
             <div className='mt-4 px-4 flex flex-col  items-center justify-evenly flex-wrap gap-5'>
               <div className="text-3xl sm:text-5xl flex flex-col justify-center pr-8 font-semibold items-center font-mono gap-3 text-white">
-                {/* <span className='bg-red-500 text-3xl px-4 py-1 rounded-3xl'> {mgr.businesstype} </span> */}
                 <span className='text-center'>{mgr.businessname}</span>
                 <span className="text-xl text-center sm:text-2xl flex justify-center">Manager : {mgr.ownername} </span>
               </div>
               {qrURL && (<div className='flex mt-5 items-center justify-center  relative qr-box'>
-                <canvas ref={canvasRef} className='qr-code border-green-500 border-4 border-dashed mb-2' />
+                <div ref={qrCodeRef}>
+                  <QRCode value={`${cururl}/client/${mgr.username}`} size={200} />
+                </div>
                 <button className='bg-teal-500  p-2 rounded-lg qr-btn  absolute' onClick={handleQRDownload}>
                   <i className="fa-solid fa-download " style={{ color: "#000000" }} /> QR
                 </button>
-
               </div>)}
 
               <div>
@@ -257,7 +245,6 @@ const Dashboard = () => {
                       className="h-8 w-[3rem] rounded-md border ml-2 border-gray-300 pl-3 text-sm focus:outline-none focus:ring-1 focus:ring-gray-400"
                     />
                     <button className='px-4 border-2 bg-green-400 border-green-200 rounded-lg hover:bg-green-600 text-black ml-2' type='submit'>Save</button>
-
                   </div>
                 </form>
               </div>
@@ -266,7 +253,6 @@ const Dashboard = () => {
               </div>
             </div>
 
-
             <div className='flex mt-16 mb-7 items-center justify-center gap-8'>
               <div className="text-4xl font-bold flex justify-center items-center underline text-teal-500">Employee Registration</div>
               <button onClick={toggleModal} className="bg-teal-500 p-2 rounded-lg">
@@ -274,7 +260,6 @@ const Dashboard = () => {
               </button>
             </div>
 
-            {/* <div className="mt-20 float-start ml-10"> */}
             <section className="flex justify-center items-center">
               <div className="">
                 {modal && (
@@ -439,9 +424,6 @@ const Dashboard = () => {
               </div>
             </section>
 
-            {/* </div> */}
-
-            {/* Display EmployeeCards for each employee */}
             <div className="flex flex-wrap justify-center">
               {employees.length !== 0 ? (employees.map((employee) => (
                 <EmployeeCard key={employee.upiId} employeeData={employee} handleDelete={handleDelete} />
